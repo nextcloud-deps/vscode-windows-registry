@@ -6,6 +6,7 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "compile": "tsc -p ./",
+    "install": "node-gyp-build",
     "test": "mocha -r ts-node/register test/**/*.test.ts"
   },
   "repository": {
