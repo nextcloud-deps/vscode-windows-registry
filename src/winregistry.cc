@@ -4,6 +4,8 @@
  *license information.
  *--------------------------------------------------------------------------------------------*/
 
+#define NAPI_VERSION 10
+
 #include <string>
 #include <windows.h>
 
