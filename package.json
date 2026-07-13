@@ -7,7 +7,10 @@
   "scripts": {
     "compile": "tsc -p ./",
     "install": "node-gyp-build",
-    "prebuild-package": "prebuildify --napi --platform win32 --arch x64",
+    "prebuilds": "prebuildify --napi --platform win32",
+    "prebuilds:x64": "prebuildify --napi --platform win32 --arch x64",
+    "prebuilds:arm64": "prebuildify --napi --platform win32 --arch arm64",
+    "prebuilds:all": "npm run prebuilds:x64 && npm run prebuilds:arm64",
     "test": "mocha -r ts-node/register test/**/*.test.ts"
   },
   "repository": {
