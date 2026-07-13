@@ -2,6 +2,9 @@ name: Prebuilds
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - ci/prebuild
 
 permissions: {}
 
