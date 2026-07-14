@@ -23,9 +23,9 @@ npm i github:nextcloud-deps/vscode-windows-registry#v1.2.3-prebuild
    ```sh
    npm run compile
    ```
-5. Rebuild binaries on **Windows x64**
+5. Rebuild binaries on **Windows**
    ```sh
-   npm run prebuild-package
+   npm run prebuilds
    ```
 6. Update version with `-prebuild` suffix
    ```sh
@@ -48,19 +48,25 @@ npm i github:nextcloud-deps/vscode-windows-registry#v1.2.3-prebuild
     ```sh
     winget install Microsoft.VisualStudio.2022.BuildTools
     ```
-1. Modify **Visual Studio** to add **Visual C++ build tools**:
+1. Modify **Visual Studio** to add **Visual C++ build tools** (skip ARM* if you only need to test x64):
     ```sh
     & "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vs_installer.exe" modify `
         --productId Microsoft.VisualStudio.Product.BuildTools `
         --channelId VisualStudio.17.Release `
+        --add Microsoft.VisualStudio.Component.Windows11SDK.26100 `
         --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
         --add Microsoft.VisualStudio.Component.VC.Runtimes.x86.x64.Spectre `
-        --add Microsoft.VisualStudio.Component.Windows11SDK.26100 `
+        --add Microsoft.VisualStudio.Component.VC.Tools.ARM64 `
+        --add Microsoft.VisualStudio.Component.VC.Tools.ARM64EC `
+        --add Microsoft.VisualStudio.Component.VC.Runtimes.ARM64.Spectre `
+        --add Microsoft.VisualStudio.Component.VC.Runtimes.ARM64EC.Spectre
     ```
     or manually run **Visual Studio Installer** and select **Individual components**:
+    - Windows 11 SDK (10.0.26100.7705)
     - MSVC v143 - VS 2022 C++ x64/x86 build tools (latest)
     - MSVC v143 - VS 2022 C++ x64/x86 Spectre-Mitigated libs (latest)
-    - Windows 11 SDK
+    - MSVC v143 - VS 2022 C++ ARM64/ARM64EC build tools (latest)
+    - MSVC v143 - VS 2022 C++ ARM64/ARM64EC Spectre-Mitigated libs (latest)
 1. If installation goes wrong try following a simple instruction from [node-gyp](https://github.com/nodejs/node-gyp#on-windows) (installs more than 12 GB)
 
 ---
@@ -103,4 +109,3 @@ provided by the bot. You will only need to do this once across all repos using o
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-
